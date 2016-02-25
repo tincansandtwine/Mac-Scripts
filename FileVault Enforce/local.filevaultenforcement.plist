@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>local.filevaultenforcement</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/filevaultcheckandenable.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>/var/log/filevaultenforcement.log</string>
+	<key>StandardErrorPath</key>
+	<string>/var/log/filevaultenforcement_err.log</string>
+	<key>StartInterval</key>
+	<integer>60</integer>
+</dict>
+</plist>
