@@ -16,7 +16,9 @@ PLISTFILE=$"/usr/local/fvresults"
 # Checks if FileVault is already set to deferred, but not yet enabled.
 DEFERSTATUS=$(fdesetup status | grep -E -o 'Deferred')
 # Checks if MunkiReport is pingable.
-MRSTATUS=$(ping -c1 $MRWEB | grep icmp* | wc -l)
+MRSTATUS=$(ping -c1 ${MRWEB} | grep icmp* | wc -l)
+# Admin user/s exempt from Filevault enablement
+ADMINUSER1=$"admin"
 
 
 ######################
@@ -72,11 +74,11 @@ else
 fi
 
 
-#########################################
-# Script taken from http://git.io/vZMN9 #
-#          Modified to enforce          #
-#       FileVault as launchdaemon       #
-#########################################
+########################################
+# Script used from http://git.io/vZMN9 #
+#          Modified to enforce         #
+#       FileVault as launchdaemon      #
+########################################
 
 echo ""
 echo "***** Checking Dependencies *****"
@@ -348,7 +350,7 @@ echo "***** Enabling FileVault *****"
 
 echo ${ENCRYPTUSER}" is the currently logged in user."
 
-if [[ ${ENCRYPTUSER} == "root"  ||  ${ENCRYPTUSER} == "tscs" ]]; then
+if [[ ${ENCRYPTUSER} == "root"  ||  ${ENCRYPTUSER} == ${ADMINUSER1} ]]; then
 	  echo "User" ${ENCRYPTUSER} "does not require encryption. Exiting."
     echo ""; exit 1
 else
