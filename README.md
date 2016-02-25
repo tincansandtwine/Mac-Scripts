@@ -1,3 +1,3 @@
 # Mac-Scripts
 
-Scripts for deploying on Macs.
+Scripts for Macs!
