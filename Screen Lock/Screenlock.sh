@@ -5,14 +5,15 @@
 ###################
 
 # Set default minimums if requirements aren't met.
-# Default time in seconds until screensaver is enabled
+# Default time in seconds until screensaver is enabled; permitted values are 60,120,300,600,1200,1800,3600
 defaultIdle="600"
 
-# Default time in seconds after screensaver is enabled that a password is required
+# Default time in seconds after screensaver is enabled that a password is required; permitted values are 0(immediate),5,60,300,900,3600,14400,28800
 defaultPasswordDelay="300"
 
 # Default password requirement; true is required, false is not required
 defaultPwRequired="true"
+
 
 # Current user and group
 curUser="$(ls -l /dev/console | cut -d " " -f 4)"
@@ -42,12 +43,12 @@ currentTotalLockTime=`expr $currentIdle + $currentPwDelay`
 #######################################################
 
 # Determine if screensaver is enabled, if it is set to the correct time, and if it requires a password.
-if [[ "$currentTotalLockTime" -le "900" ]]; then
-	if [[ "$currentPwRequired" == "1" ]]; then
-		echo "Screensaver settings meet requirements. Exiting."
-		exit 0
-	fi
-fi
+#if [[ "$currentTotalLockTime" -le "900" ]]; then
+#	if [[ "$currentPwRequired" == "1" ]]; then
+#		echo "Screensaver settings meet requirements. Exiting."
+#		exit 0
+#	fi
+#fi
 
 echo "Screensaver policy requirements not met. Applying defaults."
 
@@ -72,3 +73,6 @@ chown "$curUser":"$curGroup" /Users/$curUser/Library/Preferences/com.apple.scree
 chown "$curUser":"$curGroup" /Users/$curUser/Library/Preferences/ByHost/com.apple.screensaver.$macUUID.plist
 
 killall cfprefsd
+
+
+
