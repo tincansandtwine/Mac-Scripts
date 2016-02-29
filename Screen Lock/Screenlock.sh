@@ -73,5 +73,5 @@ chown "$curUser":"$curGroup" /Users/$curUser/Library/Preferences/ByHost/com.appl
 
 killall cfprefsd
 
-
+killall -u $curUser cfprefsd
 
