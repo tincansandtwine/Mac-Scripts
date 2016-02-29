@@ -67,7 +67,6 @@ echo "Screensaver policy requirements not met. Applying defaults."
 /usr/bin/defaults write /Users/$curUser/Library/Preferences/com.apple.screensaver.plist askForPassword -bool true
 /usr/bin/defaults write /Users/$curUser/Library/Preferences/com.apple.screensaver.plist askForPasswordDelay -int $defaultPasswordDelay
 /usr/bin/defaults write /Users/$curUser/Library/Preferences/com.apple.screensaver.plist tokenRemovalAction -int 1
-/usr/bin/defaults write /Users/$curUser/Library/Preferences/com.apple.screensaver.plist idleTime -int 10
 
 chown "$curUser":"$curGroup" /Users/$curUser/Library/Preferences/com.apple.screensaver.plist
 chown "$curUser":"$curGroup" /Users/$curUser/Library/Preferences/ByHost/com.apple.screensaver.$macUUID.plist
