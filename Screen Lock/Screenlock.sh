@@ -43,12 +43,12 @@ currentTotalLockTime=`expr $currentIdle + $currentPwDelay`
 #######################################################
 
 # Determine if screensaver is enabled, if it is set to the correct time, and if it requires a password.
-#if [[ "$currentTotalLockTime" -le "900" ]]; then
-#	if [[ "$currentPwRequired" == "1" ]]; then
-#		echo "Screensaver settings meet requirements. Exiting."
-#		exit 0
-#	fi
-#fi
+if [[ "$currentTotalLockTime" -le "900" ]]; then
+	if [[ "$currentPwRequired" == "1" ]]; then
+		echo "Screensaver settings meet requirements. Exiting."
+		exit 0
+	fi
+fi
 
 echo "Screensaver policy requirements not met. Applying defaults."
 
