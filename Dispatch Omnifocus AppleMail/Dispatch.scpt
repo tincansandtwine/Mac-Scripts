@@ -1,15 +1,9 @@
--- Mail to OmniFocus by J.R. Arseneau
--- http://theinterstitial.net/
+-- Mail/Dispatch/OmniFocus workaround
 --
--- Small AppleScript that works in Yosemite to mimick
--- the Clip-o-Tron from The Omni Group.
+-- Requires app on OS X that interprets 'x-dispatch' URLs, eg., http://www.dispatchapp.net/faq.html#openDispatchLinksOnMac
 --
--- v1.0 - 30 September 2014
---
--- Known Issues:
---
---  - Will only do 1 message at a time (no multi-select or threads)
---
+-- Modified from https://gist.github.com/jrarseneau/e0abe8edfaff9965305c
+
 
 tell application "Mail"
 set AppleScript's text item delimiters to {","}
@@ -26,8 +20,8 @@ set messageRecipientList to {}
 set messageRecipientList to email addresses of messageAccount
 set theMessageRecipient to messageRecipientList as string
 if theMessageRecipient contains "," then
-repeat until theMessageRecipient does not contain ","
-set theMessageRecipient to rich text 1 thru -2 of theMessageRecipient
+  repeat until theMessageRecipient does not contain ","
+  set theMessageRecipient to rich text 1 thru -2 of theMessageRecipient
 end repeat
 end if
 set theMessageDate to the date sent of the theMessage
